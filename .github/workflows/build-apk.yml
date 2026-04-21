@@ -21,7 +21,7 @@ jobs:
 
       # 3. 安装 Android SDK (这是关键，防止找不到 Android 版本)
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
 
       # 4. 授予权限 (尝试创建 gradlew 如果不存在，或者修复权限)
       - name: Make gradlew executable
