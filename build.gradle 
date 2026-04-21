@@ -1,0 +1,12 @@
+// 定义仓库，去哪里下载依赖
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// 定义清理任务
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
