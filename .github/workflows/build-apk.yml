@@ -30,16 +30,15 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         
-        #清除gradle缓存
-      - name: Cache Gradle packages
+      #清除gradle缓存
+      - name: Cache Gradle
         uses: actions/cache@v3
         with:
          path: |
           ~/.gradle/caches
-          ~/.gradle/wrapper   # 把下面这行的 key 改一下，强制刷新缓存
-          key: ${{ runner.os }}-gradle-v2-${{ hashFiles('**/*.gradle*', '**/settings.gradle*') }} 
-    # 注意上面加了 v2，并且 hashFiles 里包含了 settings.gradle
-
+          ~/.gradle/wrapper
+           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}-v2
+     
       # 5. 编译 APK
       # 注意：这里使用的是 'gradle' 而不是 './gradlew'
       - name: Build Debug APK
