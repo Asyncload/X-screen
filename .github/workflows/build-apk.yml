@@ -33,7 +33,7 @@ jobs:
         run: ./gradlew assembleRelease
 
       - name: Upload Release APK
-        uses: actions/upload-release@v4
+        uses: softprops/action-gh-release@v2
         with:
           name: app-X-screenshot
           path: app/build/outputs/apk/release/*.apk
