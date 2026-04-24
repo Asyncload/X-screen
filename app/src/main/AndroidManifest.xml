@@ -2,13 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lbxq.screen">
 
-    <!-- 声明 LSPosed 模块 -->
+    <!-- 权限声明：放在manifest根节点最前面 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
+
     <application
         android:label="X-screen" 
-    
         tools:ignore="HardcodedDebugMode,MissingApplicationIcon"  
-        android:requestLegacyExternalStorage="true" /> <!-- 只对安卓10有用 -->
-        
+        android:requestLegacyExternalStorage="true"> <!-- 删掉这里的 /，标签不闭合 -->
         
         <!-- 主 Activity -->
         <activity android:name="com.lbxq.screen.MainActivity"
@@ -30,7 +33,7 @@
             </intent-filter>
         </service>
 
-        <!-- LSPosed 模块声明 -->
+        <!-- LSPosed 模块声明（API 101 完整写法） -->
         <meta-data
             android:name="de.robv.android.xposed.module"
             android:value="on" />
@@ -40,15 +43,10 @@
         <meta-data
             android:name="xposedminversion"
             android:value="101" />
-         <!-- ✅ API 101 必须：声明模块入口类 -->
-         <meta-data
-             android:name="xposedmodule"
-             android:value="com.lbxq.screen.XscreenModule" />
+        <meta-data
+            android:name="xposedmodule"
+            android:value="com.lbxq.screen.XscreenModule" />
+
     </application>
 
-    <!-- 权限声明 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
 </manifest>
