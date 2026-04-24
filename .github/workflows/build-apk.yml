@@ -88,6 +88,8 @@ jobs:
           # 标签名，每次都会覆盖更新
           tag_name: V_${{ env.VERSION }}
           #内容
-          body:✅完成编译: ${{ env.DATE }} & ${{ env.TIME }}
+          body: |
+           ✅编译完成！
+            编译时间: ${{ env.DATE }} & ${{ env.TIME }}
           # 允许覆盖已存在的文件
           overwrite_files: true
