@@ -68,7 +68,6 @@ android {
 dependencies {
     // Xposed/LSPosed 模块核心API（compileOnly表示仅编译时依赖，不打包进APK）
     compileOnly 'de.robv.android.xposed:api:82'
-    compileOnly 'de.robv.android.xposed:api-sdk:82'
 
     // AndroidX AppCompat 依赖，用来支持你的MainActivity和AndroidX特性
     // AndroidX AppCompat，强制排除重复的Kotlin标准库
