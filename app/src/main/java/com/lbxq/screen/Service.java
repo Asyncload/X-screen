@@ -1,4 +1,4 @@
-package com.example.forcescreenshot;
+package com.lbxq.screen;
 
 import android.accessibilityservice.AccessibilityService;
 import android.util.Log;
