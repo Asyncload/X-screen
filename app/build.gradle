@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace 'com.example.forcescreenshot'
-    compileSdk 34
+    namespace 'com.lbxq.screen'
+    compileSdk 35
     
     defaultConfig {
         applicationId "com.example.forcescreenshot"
         minSdk 24          
-        targetSdk 34
+        targetSdk 35
         versionCode 11
         versionName "1.1"
         
@@ -66,7 +66,8 @@ android {
 dependencies {
     
     compileOnly 'de.robv.android.xposed:api:82'
-    compileOnly 'de.robv.android.xposed:api:82:sources'
+    compileOnly 'de.robv.android.xposed:api-sdk:82:sources'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     
     
     
