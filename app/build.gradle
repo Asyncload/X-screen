@@ -3,7 +3,6 @@ plugins {
     id 'com.android.application'
 }
 
-
 // Android项目核心配置块
 android {
     // 命名空间（Gradle 新版必须，替代旧版package声明）
@@ -79,4 +78,7 @@ dependencies {
         exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
         exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
     }
+
+    // 新增：解决 constraintLayout 布局属性报错
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 }
