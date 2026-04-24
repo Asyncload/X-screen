@@ -49,7 +49,7 @@ jobs:
         run: |
            VERSION=$(grep versionName app/build.gradle | awk '{print $2}' | tr -d '"')
            DATE=$(date +%Y%m%d)
-           NEW_NAME="v${VERSION}_${DATE}.apk"
+           NEW_NAME="X-screenv${VERSION}_${DATE}.apk"
            mv app/build/outputs/apk/release/app-release.apk app/build/outputs/apk/release/$NEW_NAME
            echo "APK_FILE=app/build/outputs/apk/release/$NEW_NAME" >> $GITHUB_ENV
       
