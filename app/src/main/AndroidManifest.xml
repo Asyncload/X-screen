@@ -9,7 +9,7 @@
         
         
         <!-- 主 Activity -->
-        <activity android:name=".MainActivity"
+        <activity android:name="MainActivity"
                   android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
 
         <!-- 无障碍服务 -->
         <service
-            android:name=".XscreenService"
+            android:name="XscreenService"
             android:label="截图服务"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
             android:exported="false">
@@ -30,7 +30,7 @@
 
         <!-- LSPosed 模块声明 -->
         <meta-data
-            android:name="XscreenModule"
+            android:name="de.robv.android.xposed.module"
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
