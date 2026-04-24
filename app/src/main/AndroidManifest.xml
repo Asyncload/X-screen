@@ -19,7 +19,7 @@
 
         <!-- 无障碍服务 -->
         <service
-            android:name=".ScreenshotService"
+            android:name=".XscreenService"
             android:label="截图服务"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
             android:exported="false">
@@ -30,7 +30,7 @@
 
         <!-- LSPosed 模块声明 -->
         <meta-data
-            android:name="xposedmodule"
+            android:name="XscreenModule"
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
