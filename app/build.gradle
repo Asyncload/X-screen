@@ -23,9 +23,9 @@ android {
         targetSdk 35
 
         // 版本号（数字，用于系统识别更新）
-        versionCode 1
+        versionCode 1.0.0
         // 版本名（字符串，给用户看的）
-        versionName "1.0.0"
+        versionName "X_screen"
         
 
     // 构建类型：release（发布版）和debug（调试版）的配置
