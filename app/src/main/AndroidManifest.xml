@@ -41,7 +41,7 @@
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
-            android:value="强制截图模块" />
+            android:value="解除某些APP权限限制" />
         <meta-data
             android:name="xposedminversion"
             android:value="82" />
