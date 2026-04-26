@@ -30,14 +30,14 @@ jobs:
         run: chmod +x gradlew
 
       # ==============================================
-      # 【前置】自增版本号 → 写入app/build.gradle.kts
+      # 【前置】自增版本号 → 写入app/build.gradle
       # ==============================================
       - name: Update the version number
         run: |
           echo "📝 build.gradle.kts中versionName行原始内容："
-          grep versionName app/build.gradle.kts
+          grep versionName app/build.gradle
 
-          OLD_VER=$(grep versionName app/build.gradle.kts | awk '{print $NF}' | tr -d '"' | tr -d "'")
+          OLD_VER=$(grep versionName app/build.gradle | awk '{print $NF}' | tr -d '"' | tr -d "'")
           echo "🔍 读取到旧版本号: $OLD_VER"
 
           V1=$(echo $OLD_VER | cut -d'.' -f1)
@@ -58,12 +58,12 @@ jobs:
 
           sed -i "s/versionName\s*=\?\s*[\"'].*[\"']/versionName = \"${NEW_VER}\"/g" app/build.gradle.kts
           
-          UPDATED_VER=$(grep versionName app/build.gradle.kts | awk '{print $NF}' | tr -d '"' | tr -d "'")
+          UPDATED_VER=$(grep versionName app/build.gradle | awk '{print $NF}' | tr -d '"' | tr -d "'")
           if [ "$UPDATED_VER" != "$NEW_VER" ]; then
             echo "❗ 版本号写入失败！当前文件中的值: $UPDATED_VER"
             exit 1
           fi
-          echo "✅ 版本号已成功写入build.gradle.kts"
+          echo "✅ 版本号已成功写入build.gradle"
 
           DATE=$(date +%Y-%m-%d)
           TIME=$(date +%H:%M:%S)
