@@ -67,7 +67,7 @@ jobs:
       # zipalign对齐 + apksigner签名（解决jarsigner兼容问题，支持V1/V2/V3签名）
       - name: Align & Sign APK
         run: |
-          BUILD_TOOLS="$ANDROID_HOME/build-tools/34.0.0"
+          $BUILD_TOOLS/apksigner
           UNSIGNED=app/build/outputs/apk/release/app-release-unsigned.apk
           ALIGNED=app/build/outputs/apk/release/app-release-aligned.apk
           SIGNED=app/build/outputs/apk/release/app-release-signed.apk
