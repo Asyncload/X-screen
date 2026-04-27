@@ -61,7 +61,7 @@ jobs:
       - name: Decode keystore
         run: echo "${{ secrets.XCREEN_JKS }}" | base64 -d > my-release-key.jks
 
-      # zipalign对齐 + apksigner签名（解决Tag number over 30兼容问题）
+      # 签名步骤（兼容模式已拉满）
       - name: Align & Sign APK
         run: |
           # 先定义所有变量（必须放在最前面！）
@@ -70,14 +70,10 @@ jobs:
           ALIGNED=app/build/outputs/apk/release/app-release-aligned.apk
           SIGNED=app/build/outputs/apk/release/app-release-signed.apk
 
-          # 可选：检查build-tools路径是否存在（排错用，可保留）
-          echo "Checking build-tools path: $BUILD_TOOLS"
-          ls -la "$BUILD_TOOLS" || echo "❌ Path not found! Available build-tools:" && ls -la "$ANDROID_HOME/build-tools/"
-
-          # 1. 对齐APK（优化文件结构，提升运行效率）
+          # 1. 对齐APK
           "$BUILD_TOOLS/zipalign" -v -p 4 "$UNSIGNED" "$ALIGNED"
           
-          # 2. 使用官方apksigner签名（强制指定PKCS12类型，添加兼容参数）
+          # 2. 签名（强制指定PKCS12类型）
           "$BUILD_TOOLS/apksigner" sign \
             --ks my-release-key.jks \
             --ks-type PKCS12 \
@@ -86,12 +82,10 @@ jobs:
             --key-pass pass:${{ secrets.KEYSTORE_PASSWORD }} \
             --out "$SIGNED" "$ALIGNED"
           
-          # 3. 验证签名有效性（可选，确保签名成功）
+          # 3. 验证签名
           "$BUILD_TOOLS/apksigner" verify --verbose "$SIGNED"
           
-          # 清理临时密钥文件
           rm -f my-release-key.jks
-        # 关键：强制启用旧版PKCS12兼容模式，解决Tag number错误
         env:
           JAVA_TOOL_OPTIONS: "-Dkeystore.pkcs12.legacy"
 
