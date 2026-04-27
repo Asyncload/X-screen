@@ -9,7 +9,6 @@ import android.view.WindowManager;
 
 import java.util.HashMap;
 import java.util.Map;
-
 public class XscreenModule implements IXposedHookLoadPackage {
 
     private static final Map<String, String> PACKAGE_NAMES = new HashMap<>();
